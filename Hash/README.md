@@ -63,5 +63,34 @@ print("c" in s)    # 셋: 해시 탐색
 - 중복 원소 제거
 - 교집합/차집합 계산
 
+## 7) `sorted()` vs `sort()` 정리
+- `sorted(iterable)`: 새 리스트를 반환하고, 원본은 유지됨
+- `list.sort()`: 리스트 원본 자체를 정렬하고, 반환값은 `None`
+- 실전에서는 헷갈리면 `sorted()` 위주로 써도 대부분 충분함
+
+### 7-1. 자주 쓰는 `sorted()` 패턴
+```python
+# 오름차순
+sorted(arr)
+
+# 내림차순
+sorted(arr, reverse=True)
+
+# 길이 기준
+sorted(words, key=len)
+
+# 값 기준 (dict)
+sorted(d.items(), key=lambda x: x[1], reverse=True)
+
+# 2차 정렬: 재생수 내림차순, 고유번호 오름차순
+sorted(songs, key=lambda x: (-x[0], x[1]))
+```
+
+### 7-2. 베스트앨범(42579)에서 핵심 정렬 2줄
+```python
+all_genres = sorted(dict_all.items(), key=lambda x: x[1], reverse=True)
+songs = sorted(dict_one[genre], key=lambda x: (-x[0], x[1]))
+```
+
 ---
 다음에는 이 폴더에 해시 문제 풀이 파일을 같은 방식으로 추가하면 됩니다.
